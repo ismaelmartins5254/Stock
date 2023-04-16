@@ -1,0 +1,21 @@
+.container{
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50vh;
+    
+}
+
+.NameBus{
+    font-size: 1.5em;
+    font-family: 'Cinzel', serif;
+    color: #979797;
+    background-color: #525252;
+}
+
+.minText{
+    color: #2a2a2a;
+    margin-bottom: 1em;
+}

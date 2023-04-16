@@ -1,0 +1,25 @@
+.container {
+    width: 100%;
+    position: absolute;
+    justify-content: center;
+    display: flex;
+    margin-top: -1em;
+}
+
+.sucess {
+    background-color: #519e51;
+}
+
+.error {
+    background-color: #9e4646;
+}
+
+.msg {
+    width: 30%;
+    height: 2em;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 5px;
+}

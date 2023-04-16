@@ -1,0 +1,14 @@
+.input{
+    text-align: center;
+    width: 20em;
+    border-radius: 5px;
+    justify-content: center;
+    border: none;
+    margin: .2em;
+    height: 2em;
+}
+
+
+label{
+    font-family: 'Noto Serif', serif;
+}
