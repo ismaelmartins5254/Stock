@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Cards from '../layout/Cards'
 import PageEdit from '../pages/PageEdit'
+import DelIten from '../pages/DelIten'
 
 import Style from './Estoque.module.css'
 
@@ -30,7 +31,7 @@ function Estoque() {
     setEditItem(true)
     console.log(data)
   }
-  
+
 
   const DelIten = (e) => {
     console.log('excluir')
@@ -43,26 +44,26 @@ function Estoque() {
       {EditItem ? (
         <>
           <PageEdit
-             namep={Section.name}
-             descriptionp={Section.description}
-             valuep={Section.value}
-             valueTp={Section.valueT}
-             typep={Section.type}
-             key={Section.id}
-             quantp={Section.quant}
-             id={Section.id}
+            namep={Section.name}
+            descriptionp={Section.description}
+            valuep={Section.value}
+            valueTp={Section.valueT}
+            typep={Section.type}
+            key={Section.id}
+            quantp={Section.quant}
+            id={Section.id}
           />
         </>
       ) : (
         item && item.map((iten) => (
           <>
             <Cards
+              key={iten.id}
               name={iten.name}
               description={iten.description}
               value={iten.value}
               valueT={iten.valueT}
               type={iten.type}
-             
               quant={iten.quant}
               id={iten.id}
               ButtonEditIten={EditIten}

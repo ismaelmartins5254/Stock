@@ -1,46 +1,86 @@
+import { useState } from 'react'
+
 import Style from './Cards.module.css'
 import Button from '../form/Button'
+import Message from './Message'
 
-function Cards({ name, description, value, valueT, type, quant, ButtonDelIten, ButtonEditIten, id}) {
 
+function Cards({ name, description, value, valueT, type, quant, ButtonEditIten, id }) {
+
+  let [message, setMessage] = useState(false)
+  let [messageText, setMessageText] = useState('')
+  let [typeM, setTypeM] = useState('')
+
+  const DelIten = async (e) => {
+    e.preventDefault()
+    let iten = e.target
+    let parent = iten.closest('section')
+    let res = await fetch(`http://localhost:5000/itens/${parent.id}`, {
+      method: 'DELETE'
+    })
+    let data = res.json()
+    console.log(data)
+    try {
+      setMessage(true)
+      setTypeM('success')
+      setMessageText('Item excluído com sucesso')
+      setTimeout(() => {
+        setMessage(false)
+        location.reload()
+      }, 2000)
+      
+    } catch (error) {
+      console.log(error)
+      setTypeM('error')
+      setMessageText('[ERROR] ocorreu algum problema ao excluir o item, por favor tente novamente')
+    }
+  }
 
   return (
-    <div className={Style.container}>
-      <section className={Style.cards} id={id} key={id}>
-        <h3>{name}</h3>
-        <p>Descrição do item: <span>{description}</span> </p>
-        <p>Valor Unitário: {value}</p>
-        <p>Quantidade: {quant}</p>
-        <p>Valor Total: {valueT}</p>
-        <p>Setor do item: {type}</p>
-        <div className={Style.btns}>
-          <div className={Style.edit}>
-            <Button
-              text={
-                <>
-                  <span>Editar</span>
-                  <span
-                    className="material-symbols-outlined ">
-                    edit
+    <>
+      {message && (
+        <Message 
+          text={messageText}
+          type={typeM}
+        />
+    )}
+      <div className={Style.container}>
+        <section className={Style.cards} id={id} key={id}>
+          <h3>{name}</h3>
+          <p>Descrição do item: <span>{description}</span> </p>
+          <p>Valor Unitário: R${value}</p>
+          <p>Quantidade: {quant}</p>
+          <p>Valor Total: R${valueT}</p>
+          <p>Setor do item: {type}</p>
+          <div className={Style.btns}>
+            <div className={Style.edit}>
+              <Button
+                text={
+                  <>
+                    <span>Editar</span>
+                    <span
+                      className="material-symbols-outlined ">
+                      edit
+                    </span>
+                  </>}
+                onclick={ButtonEditIten}
+              />
+            </div>
+            <div className={Style.exl}>
+              <Button
+                text={<>
+                  <span>Excluir</span>
+                  <span className="material-symbols-outlined">
+                    delete
                   </span>
                 </>}
-              onclick={ButtonEditIten}
-            />
+                onclick={DelIten}
+              />
+            </div>
           </div>
-          <div className={Style.exl}>
-            <Button
-              text={<>
-                <span>Excluir</span>
-                <span className="material-symbols-outlined">
-                  delete
-                </span>
-              </>}
-              onclick={ButtonDelIten}
-            />
-          </div>
-        </div>
-      </section>
-    </div >
+        </section>
+      </div >
+    </>
   )
 }
 

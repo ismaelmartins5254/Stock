@@ -1,25 +1,13 @@
 {
   "itens": [
     {
-      "name": "arroz",
-      "description": "arroz chines",
+      "name": "açucar",
+      "description": "açucar cristal",
       "value": "2",
       "type": "Alimentos não perecíveis",
-      "quant": "12",
-      "valueT": "24",
-      "id": 1
-    },
-    {
+      "quant": "5",
+      "valueT": "10",
       "id": 2
-    },
-    {
-      "name": "carne",
-      "description": "carne de porco",
-      "value": "15",
-      "type": "Congelados e frios",
-      "quant": "20",
-      "valueT": "300",
-      "id": 3
     }
   ],
   "types": [

@@ -15,54 +15,60 @@ function AddIten() {
   let [value, setValue] = useState('')
   let [quant, setQuant] = useState('')
   let [select, setSelect] = useState('')
-  let [state, setState] = useState(false)
+  let [message, setMessage] = useState(false)
+  let [Type, setType] = useState('')
+  let [Text, setText] = useState('')
 
 
   async function AddIten() {
 
-    if (name == 0 || description == 0 || value == 0 || quant == 0) {
-      setState(true)
+    let link = 'http://localhost:5000/itens' // link do BD
+
+    if (name == 0 || description == 0 || value == 0 || quant == 0 || select == 0) { //verificação se todos os states foram alterados
+      setMessage(true)
+      setType('error')
+      setText('Preencha todos os itens antes de continuar :)')
       setTimeout(() => {
-        setState(false)
+        setMessage(false)
       }, 2000)
       return
     }
-    let res = await fetch('http://localhost:5000/itens', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "name": `${name}`,
-        "description": `${description}`,
-        "value": `${value}`,
-        "type": `${select}`,
-        "quant": `${quant}`,
-        "valueT": `${value * quant}`
-      }),
 
-    })
+
+
+    var res = await fetch(link,{ // adicionando os itens no BD
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "name": `${name}`,
+          "description": `${description}`,
+          "value": `${value}`,
+          "type": `${select}`,
+          "quant": `${quant}`,
+          "valueT": `${value * quant}`
+        }),
+
+      })
     try {
-     
+      setMessage(true)
+      setType('success')
+      setText('Item adicionado com sucesso')
+      setTimeout(() => {
+        setMessage(false)
+      }, 2000)
     } catch (error) {
       console.log(error)
     }
-
-    setName('')
-    setDescription('')
-    setQuant('')
-    setSelect('')
-    setValue('')
 
   }
 
 
   return (
     <>
-      {state && (
-
-        <Message type='error' text='Preencha todos os itens antes de continuar :)' />
-
+      {message && ( // menssagem especificando se o item foi adicionado ou não
+        <Message type={Type} text={Text} />
       )}
       <div className={Style.container}>
         <section className={Style.box}>
