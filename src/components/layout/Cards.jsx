@@ -11,10 +11,10 @@ function Cards({ name, description, value, valueT, type, quant, ButtonEditIten, 
   let [messageText, setMessageText] = useState('')
   let [typeM, setTypeM] = useState('')
 
-  const DelIten = async (e) => {
+  const DelIten = async (e) => { //sistema para deletar o item desejado
     e.preventDefault()
-    let iten = e.target
-    let parent = iten.closest('section')
+    let iten = e.target //seleciona o item que Efetuou o evento DOM
+    let parent = iten.closest('section') //procura o 'pai' na arvore do codigo
     let res = await fetch(`http://localhost:5000/itens/${parent.id}`, {
       method: 'DELETE'
     })

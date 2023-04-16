@@ -6,7 +6,7 @@ import Button from '../form/Button'
 import Style from './PageEdit.module.css'
 
 
-function PageEdit({ namep, descriptionp, quantp, typep, valuep, valueTp, id }) {
+function PageEdit({ namep, descriptionp, quantp, typep, valuep, id }) {
 
   let [name, setName] = useState(`${namep}`)
   let [description, setDescription] = useState(`${descriptionp}`)
@@ -15,7 +15,7 @@ function PageEdit({ namep, descriptionp, quantp, typep, valuep, valueTp, id }) {
 
   async function EditIten(e) {
     e.preventDefault()
-    let res = await fetch(`http://localhost:5000/itens/${id}`, {
+    let res = await fetch(`http://localhost:5000/itens/${id}`, { //reqisição para atualização dos itens no BD
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -30,7 +30,7 @@ function PageEdit({ namep, descriptionp, quantp, typep, valuep, valueTp, id }) {
         "id": `${id}`
       })
     })
-    location.reload()
+    location.reload() // volta a página Estoque com os itens já editados
   }
 
   return (

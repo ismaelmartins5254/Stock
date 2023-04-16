@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import Cards from '../layout/Cards'
 import PageEdit from '../pages/PageEdit'
-import DelIten from '../pages/DelIten'
 
 import Style from './Estoque.module.css'
 
@@ -12,8 +11,8 @@ function Estoque() {
   let [EditItem, setEditItem] = useState(false)
   let [Section, setSection] = useState([])
 
-  useEffect(() => {
-    fetch('http://localhost:5000/itens')
+  useEffect(() => { //Executar apenas uma vez sem precisar de uma requisição manual
+    fetch('http://localhost:5000/itens') //requisição GET para adicionar todos os itens já cadastrado no documento
       .then(res => res.json())
       .then(data => {
         setItem(data)
@@ -21,56 +20,46 @@ function Estoque() {
       .catch(err => console.log(err))
   }, [])
 
-  const EditIten = async (e) => {
+  const EditIten = async (e) => {//sistema de edição dos itens
     e.preventDefault()
     let iten = e.target
     let parent = iten.closest('section')
-    let res = await fetch(`http://localhost:5000/itens/${parent.id}`)
+    let res = await fetch(`http://localhost:5000/itens/${parent.id}`) // selecionando o card clicado ao BD
     let data = await res.json()
     setSection(data)
-    setEditItem(true)
-    console.log(data)
+    setEditItem(true)//mostrar a página de edição
   }
-
-
-  const DelIten = (e) => {
-    console.log('excluir')
-  }
-
 
   return (
     <div className={Style.container}>
 
       {EditItem ? (
-        <>
-          <PageEdit
-            namep={Section.name}
-            descriptionp={Section.description}
-            valuep={Section.value}
-            valueTp={Section.valueT}
-            typep={Section.type}
-            key={Section.id}
-            quantp={Section.quant}
-            id={Section.id}
-          />
-        </>
+        <PageEdit
+          namep={Section.name}
+          descriptionp={Section.description}
+          valuep={Section.value}
+          valueTp={Section.valueT}
+          typep={Section.type}
+          key={Section.id}
+          quantp={Section.quant}
+          id={Section.id}
+        />
+
       ) : (
         item && item.map((iten) => (
-          <>
-            <Cards
-              key={iten.id}
-              name={iten.name}
-              description={iten.description}
-              value={iten.value}
-              valueT={iten.valueT}
-              type={iten.type}
-              quant={iten.quant}
-              id={iten.id}
-              ButtonEditIten={EditIten}
-              ButtonDelIten={DelIten}
-              editP={EditItem}
-            />
-          </>
+          //O sistema de deletar os itens está na página cards
+          <Cards
+            key={iten.id}
+            name={iten.name}
+            description={iten.description}
+            value={iten.value}
+            valueT={iten.valueT}
+            type={iten.type}
+            quant={iten.quant}
+            id={iten.id}
+            ButtonEditIten={EditIten}
+            editP={EditItem}
+          />
         ))
       )
       }
