@@ -73,7 +73,7 @@ function AddIten() {
       <div className={Style.container}>
         <section className={Style.box}>
           <Inputs
-            place='Nome do item'
+            place='o Nome do item'
             type='text'
             change={(e) => setName(e.target.value)}
             id='name'
@@ -81,7 +81,7 @@ function AddIten() {
             value={name ? name : ''}
           />
           <Inputs
-            place='Descrição'
+            place='a Descrição'
             type='text'
             change={(e) => setDescription(e.target.value)}
             id='description'
@@ -89,7 +89,7 @@ function AddIten() {
             value={description ? description : ''}
           />
           <Inputs
-            place='Valor'
+            place='o Valor'
             type='number'
             change={(e) => setValue(e.target.value)}
             id='value'
@@ -97,7 +97,7 @@ function AddIten() {
             value={value ? value : ''}
           />
           <Inputs
-            place='Quantidade'
+            place='a Quantidade'
             type='number'
             change={(e) => setQuant(e.target.value)}
             id='quant'

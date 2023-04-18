@@ -7,6 +7,8 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 1em;
+    width: 100%;
+    border: 2px solid red;
     
 }
 
@@ -18,6 +20,7 @@
 
 .links{
     display: flex;
+    flex-direction: row;
     width: 100%;
     justify-content: space-around;
     text-align: center;
@@ -43,6 +46,6 @@ a{
 }
 
 .links li:hover{
-    background-color: #999999;
-    cursor: pointer;
+    background-color: #3a3a3a;
+
 }

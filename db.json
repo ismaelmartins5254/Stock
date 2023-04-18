@@ -1,15 +1,5 @@
 {
-  "itens": [
-    {
-      "name": "açucar",
-      "description": "açucar cristal",
-      "value": "2",
-      "type": "Alimentos não perecíveis",
-      "quant": "5",
-      "valueT": "10",
-      "id": 2
-    }
-  ],
+  "itens": [],
   "types": [
     {
       "id": 1,

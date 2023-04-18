@@ -8,6 +8,10 @@
     
 }
 
+.title{
+    font-family: 'Pacifico', cursive;
+}
+
 .NameBus{
     font-size: 1.5em;
     font-family: 'Cinzel', serif;
@@ -16,6 +20,7 @@
 }
 
 .minText{
+    
     color: #2a2a2a;
     margin-bottom: 1em;
 }

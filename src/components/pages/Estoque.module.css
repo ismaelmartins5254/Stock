@@ -5,3 +5,19 @@
     
 }
 
+.AddIten{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100vw;
+    height: 70vh;
+    background-color: #838383;
+    color: #fafafa;
+    
+}
+
+.AddIten:not(a){
+    font-family: 'Cinzel', serif;
+}

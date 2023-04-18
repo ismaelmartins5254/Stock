@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Cards from '../layout/Cards'
 import PageEdit from '../pages/PageEdit'
+import ButtonLink from '../layout/ButtonLink'
 
 import Style from './Estoque.module.css'
 
@@ -63,7 +64,17 @@ function Estoque() {
         ))
       )
       }
+      <div className={Style.AddIten}>
+        <p>Nenhum item adicionado</p>
+        <p>Clique no botão abaixo para adicionar um item</p>
+        
+        <ButtonLink
+          to='/AddIten'
+          text='Adicionar Item'
+        />
+      </div>
     </div>
+
   )
 }
 

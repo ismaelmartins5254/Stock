@@ -23,6 +23,11 @@ function NavBar({ Title }) {
                         Adicionar Item
                     </li>
                 </Link>
+                <Link to='./AddSetor'>
+                    <li>
+                        Adicionar Setor
+                    </li>
+                </Link>
             </ul>
         </div >
     )

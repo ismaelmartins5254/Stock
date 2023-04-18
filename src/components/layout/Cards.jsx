@@ -23,7 +23,7 @@ function Cards({ name, description, value, valueT, type, quant, ButtonEditIten, 
     try {
       setMessage(true)
       setTypeM('success')
-      setMessageText('Item excluído com sucesso')
+      setMessageText('O Item será excluído em instantes')
       setTimeout(() => {
         setMessage(false)
         location.reload()
