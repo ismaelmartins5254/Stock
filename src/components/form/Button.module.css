@@ -1,4 +1,4 @@
-.btn{
+.btn {
     width: 15em;
     height: 3em;
     border: none;
@@ -6,7 +6,13 @@
     cursor: pointer;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: #3a3a3a;
     color: #fff;
+}
+
+@media only screen and (max-width: 300px) {
+    .btn {
+        width: 70vw;
+    }
 }

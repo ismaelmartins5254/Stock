@@ -1,6 +1,6 @@
 .input{
     text-align: center;
-    width: 20em;
+    width: 80%;
     border-radius: 5px;
     justify-content: center;
     border: none;
@@ -12,3 +12,4 @@
 label{
     font-family: 'Noto Serif', serif;
 }
+

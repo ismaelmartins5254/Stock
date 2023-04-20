@@ -4,7 +4,7 @@
     align-items: center;
     text-align: center;
     box-shadow: 5px 5px #3a3a3a;
-    width: 25em;
+    width: 40%;
     height: 30em;
     justify-content: center;
     background-color:#818181 ;
@@ -21,3 +21,8 @@
     height: 70vh;
 }
 
+@media only screen and (max-width: 300px) {
+    .box{
+        width: 80vw;
+    }   
+}
