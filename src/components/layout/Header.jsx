@@ -22,7 +22,7 @@ function Header() {
         </Link>
         <Link to='./AddSetor'>
           <li>
-            Adicionar Setor
+            Setores
           </li>
         </Link>
       </ul>

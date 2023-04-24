@@ -5,7 +5,7 @@ import Button from '../form/Button'
 import Message from './Message'
 
 
-function Cards({ name, description, value, valueT, type, quant, ButtonEditIten, id }) {
+function Cards({ name, description, value, valueT, type, quant, ButtonEditIten, id, location }) {
 
   let [message, setMessage] = useState(false)
   let [messageText, setMessageText] = useState('')
@@ -15,7 +15,7 @@ function Cards({ name, description, value, valueT, type, quant, ButtonEditIten, 
     e.preventDefault()
     let iten = e.target //seleciona o item que Efetuou o evento DOM
     let parent = iten.closest('section') //procura o 'pai' na arvore do codigo
-    let res = await fetch(`http://localhost:5000/itens/${parent.id}`, {
+    let res = await fetch(`http://localhost:5000/${location}/${parent.id}`, {
       method: 'DELETE'
     })
     let data = res.json()
@@ -26,9 +26,9 @@ function Cards({ name, description, value, valueT, type, quant, ButtonEditIten, 
       setMessageText('O Item será excluído em instantes')
       setTimeout(() => {
         setMessage(false)
-        location.reload()
+        document.location.reload()
       }, 2000)
-      
+
     } catch (error) {
       console.log(error)
       setTypeM('error')
@@ -39,19 +39,23 @@ function Cards({ name, description, value, valueT, type, quant, ButtonEditIten, 
   return (
     <>
       {message && (
-        <Message 
+        <Message
           text={messageText}
           type={typeM}
         />
-    )}
+      )}
       <div className={Style.container}>
         <section className={Style.cards} id={id} key={id}>
           <h3>{name}</h3>
-          <p>Descrição do item: <span>{description}</span> </p>
-          <p>Valor Unitário: R${value}</p>
-          <p>Quantidade: {quant}</p>
-          <p>Valor Total: R${valueT}</p>
-          <p>Setor do item: {type}</p>
+          {description && (
+            <>
+              <p>Descrição do item: <span>{description}</span> </p>
+              <p>Valor Unitário: R${value}</p>
+              <p>Quantidade: {quant}</p>
+              <p>Valor Total: R${valueT}</p>
+              <p>Setor do item: {type}</p>
+            </>
+          )}
           <div className={Style.btns}>
             <div className={Style.edit}>
               <Button

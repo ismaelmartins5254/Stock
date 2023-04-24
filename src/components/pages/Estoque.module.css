@@ -5,6 +5,10 @@
     
 }
 
+.container > div:not(p){
+    height: 20em;
+}
+
 .AddIten{
     display: flex;
     flex-direction: column;

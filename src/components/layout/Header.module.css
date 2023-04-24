@@ -1,6 +1,5 @@
 .container{
-    width: 60%;
-    height: 10em;
+    width: 70%;
     color: #eeeeee;
     display: flex;
     align-items: center;
@@ -8,4 +7,10 @@
     justify-content: space-around;  
     position: absolute;
     margin-top: 7em;
+}
+
+ul{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
 }

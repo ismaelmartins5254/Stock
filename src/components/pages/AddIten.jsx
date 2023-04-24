@@ -54,9 +54,10 @@ function AddIten() {
     try {
       setMessage(true)
       setType('success')
-      setText('Item adicionado com sucesso')
+      setText('O Item será adicionado em instantes')
       setTimeout(() => {
         setMessage(false)
+        location.reload()
       }, 2000)
     } catch (error) {
       console.log(error)

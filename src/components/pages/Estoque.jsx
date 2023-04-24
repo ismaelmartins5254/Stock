@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import Cards from '../layout/Cards'
 import PageEdit from '../pages/PageEdit'
 import ButtonLink from '../layout/ButtonLink'
@@ -60,19 +61,21 @@ function Estoque() {
             id={iten.id}
             ButtonEditIten={EditIten}
             editP={EditItem}
+            location='itens'
           />
         ))
       )
-      }
-      <div className={Style.AddIten}>
-        <p>Nenhum item adicionado</p>
-        <p>Clique no botão abaixo para adicionar um item</p>
-        
-        <ButtonLink
-          to='/AddIten'
-          text='Adicionar Item'
-        />
-      </div>
+      }{item == 0 && ( //se não tiver nenhum item adicionado
+        <div className={Style.AddIten}>
+          <p>Nenhum item adicionado</p>
+          <p>Clique no botão abaixo para adicionar um item</p>
+
+          <ButtonLink
+            to='/AddIten'
+            text='Adicionar Item'
+          />
+        </div>
+      )}
     </div>
 
   )

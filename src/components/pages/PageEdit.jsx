@@ -35,7 +35,7 @@ function PageEdit({ namep, descriptionp, quantp, typep, valuep, id }) {
 
   return (
     <div className={Style.container}>
-      <h2 className={Style.title}>Edição do item {name}</h2>
+      <h2 className={Style.title}>Edição do item {namep}</h2>
       <Inputs
         ValueLabel='Nome do item'
         place={'o Nome do Item'}
