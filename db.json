@@ -8,6 +8,14 @@
     {
       "id": 6,
       "name": "Bebidas"
+    },
+    {
+      "name": "sabão",
+      "id": 8
+    },
+    {
+      "name": "casa",
+      "id": 10
     }
   ]
 }

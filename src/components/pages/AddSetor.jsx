@@ -5,6 +5,7 @@ import Style from './AddSetor.module.css'
 import Inputs from "../form/Inputs"
 import Button from "../form/Button"
 import Cards from "../layout/Cards"
+import Message from '../layout/Message'
 
 
 function AddSetor() {
@@ -12,10 +13,12 @@ function AddSetor() {
   let [setor, setSetor] = useState('')
   let [ItensSaves, setItensSaves] = useState('')
   let [ItenEdit, setItenEdit] = useState('')
-  let [TextEdit, setTextEdit] = useState('')
+  let [TextAdd, setTextAdd] = useState(false)
+  let [message, setMessage] = useState(false)
+  let [Type, setType] = useState('')
+  let [Text, setText] = useState('')
 
-
-  useEffect(() => {
+  useEffect(() => { //pegando todos os itens já adicionados no "BD" useEffect para executar uma vez
     fetch('http://localhost:5000/types')
       .then((res) => res.json())
       .then((data) => {
@@ -24,7 +27,7 @@ function AddSetor() {
       .catch((err) => console.log(err))
   }, [])
 
-  const Adsetor = async (e) => {
+  const Adsetor = async (e) => { //sistema de adicionar item no "BD" com async function
     e.preventDefault()
     let res = await fetch('http://localhost:5000/types', {
       method: 'POST',
@@ -35,11 +38,29 @@ function AddSetor() {
         "name": `${setor}`
       })
     })
-    let data = res.json()
-    console.log(data)
+    try { //tratamento do sucesso ao adicionar o item
+      setMessage(true)
+      setType('success')
+      setText('O Item será adicionado em instantes')
+      setTimeout(() => {
+        setMessage(false)
+        location.reload()
+      }, 1000)
+    } catch (error) { //tratamento de erro ao adicionar o item
+      console.log(error)
+      setMessage(true)
+      setType('error')
+      setText('Ocorreu algum problema ao adicionar, por favor tente novamente. :)')
+      setTimeout(() => {
+        setMessage(false)
+      }, 1000)
+      return
+    }
+
+
   }
 
-  const edit = (e) => {
+  const edit = (e) => { //pegando o valor do item para fazer a edição do mesmo
     let iten = e.target
     let parent = iten.closest('section')
     setItenEdit(parent.firstChild)
@@ -48,14 +69,19 @@ function AddSetor() {
 
   return (
     <>
+      {message && ( // menssagem especificando se o item foi adicionado ou não
+        <Message
+          type={Type}
+          text={Text}
+        />
+      )}
 
-      {ItenEdit ? (
+      {ItenEdit && ( //sistema para edição dos itens
         <div>
           <Inputs
             type='text'
             place='o nome do setor'
             ValueLabel='Digite aqui o nome do setor: '
-            change={e => setSetor(e.target.value)}
             value={ItenEdit.innerText}
           />
           <Button
@@ -63,29 +89,40 @@ function AddSetor() {
 
           />
         </div>
+      )}
+
+      {TextAdd ? ( // sistema para adicionar os itens
+        <div>
+          <Inputs
+            type='text'
+            place='o nome do setor'
+            ValueLabel='Digite aqui o nome do setor: '
+            change={e => setSetor(e.target.value)}
+          />
+          <Button
+            text='Adicionar'
+            onclick={Adsetor}
+          />
+        </div>
       ) : (
         <Button
           text='Adicionar novo setor'
-          onclick={Adsetor}
+          onclick={() => setTextAdd(true)}
         />
       )}
 
 
-      {ItensSaves && (
+      {ItensSaves && ( //mostrando os itens já adicionados na tela
         <>
-
           <div className={Style.cards} >
             {ItensSaves.map((iten) => (
-
-              <Cards //the exclusion system is on the Cards page
+              <Cards //o sistema de exclusão dos itens está na página Cards
                 name={iten.name}
                 key={iten.id}
                 location='types'
                 id={iten.id}
                 ButtonEditIten={edit}
-
               />
-
             ))}
           </div>
         </>
