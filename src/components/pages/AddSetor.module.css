@@ -8,3 +8,16 @@
 .cards > div{
     height: 11em;
 }
+
+.AddSetor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2em;
+    border: 2px solid #8a8a8a;
+}
+
+.AddSetor > input{
+    width: 15em;
+}

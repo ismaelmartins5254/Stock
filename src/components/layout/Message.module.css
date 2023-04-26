@@ -1,9 +1,10 @@
 .container {
     width: 100%;
-    position: absolute;
+    position: fixed;
+    align-items: center;
     justify-content: center;
     display: flex;
-    margin-top: -1em;
+    margin-top: -14em;
 }
 
 .success {

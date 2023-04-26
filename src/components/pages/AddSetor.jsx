@@ -38,15 +38,21 @@ function AddSetor() {
         "name": `${setor}`
       })
     })
-    try { //tratamento do sucesso ao adicionar o item
+
+    try {
+      
+      //tratamento do sucesso ao adicionar o item
       setMessage(true)
       setType('success')
       setText('O Item será adicionado em instantes')
+      /*
       setTimeout(() => {
         setMessage(false)
         location.reload()
-      }, 1000)
-    } catch (error) { //tratamento de erro ao adicionar o item
+      }, 1000)*/
+    } 
+    
+    catch (error) { //tratamento de erro ao adicionar o item
       console.log(error)
       setMessage(true)
       setType('error')
@@ -76,23 +82,9 @@ function AddSetor() {
         />
       )}
 
-      {ItenEdit && ( //sistema para edição dos itens
-        <div>
-          <Inputs
-            type='text'
-            place='o nome do setor'
-            ValueLabel='Digite aqui o nome do setor: '
-            value={ItenEdit.innerText}
-          />
-          <Button
-            text='Concluir edição'
-
-          />
-        </div>
-      )}
 
       {TextAdd ? ( // sistema para adicionar os itens
-        <div>
+        <div className={Style.AddSetor}>
           <Inputs
             type='text'
             place='o nome do setor'
@@ -112,8 +104,21 @@ function AddSetor() {
       )}
 
 
-      {ItensSaves && ( //mostrando os itens já adicionados na tela
+      {ItenEdit ? ( //sistema para edição dos itens
         <>
+          <Inputs
+            type='text'
+            place='o nome do setor'
+            ValueLabel='Digite aqui o nome do setor: '
+            value={ItenEdit.innerText}
+          />
+          <Button
+            text='Concluir edição'
+          />
+        </>
+      ) : (
+
+        ItensSaves && ( //mostrando os itens já adicionados na tela
           <div className={Style.cards} >
             {ItensSaves.map((iten) => (
               <Cards //o sistema de exclusão dos itens está na página Cards
@@ -125,8 +130,8 @@ function AddSetor() {
               />
             ))}
           </div>
-        </>
-      )}
+        ))}
+
     </>
   )
 }
