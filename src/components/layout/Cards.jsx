@@ -18,8 +18,7 @@ function Cards({ name, description, value, valueT, type, quant, ButtonEditIten, 
     let res = await fetch(`http://localhost:5000/${location}/${parent.id}`, {
       method: 'DELETE'
     })
-    let data = res.json()
-    console.log(data)
+
     try {
       setMessage(true)
       setTypeM('success')
@@ -46,7 +45,9 @@ function Cards({ name, description, value, valueT, type, quant, ButtonEditIten, 
       )}
       <div className={Style.container}>
         <section className={Style.cards} id={id} key={id}>
-          <h3>{name}</h3>
+          <div className={Style.title}>
+            <h3>{name}</h3>
+          </div>
           {description && (
             <>
               <p>Descrição do item: <span>{description}</span> </p>

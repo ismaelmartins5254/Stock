@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     display: flex;
-    margin-top: -14em;
+    margin-top: -7em;
 }
 
 .success {
@@ -17,7 +17,7 @@
 
 .msg {
     width: 30%;
-    height: 2em;
+    min-height: 2em;
     text-align: center;
     justify-content: center;
     align-items: center;
