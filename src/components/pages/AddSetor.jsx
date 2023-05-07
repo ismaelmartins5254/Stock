@@ -45,11 +45,11 @@ function AddSetor() {
       setMessage(true)
       setType('success')
       setText('O Item será adicionado em instantes')
-      /*
+      
       setTimeout(() => {
         setMessage(false)
         location.reload()
-      }, 1000)*/
+      }, 1000)
     } 
     
     catch (error) { //tratamento de erro ao adicionar o item
