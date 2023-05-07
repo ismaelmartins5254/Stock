@@ -14,7 +14,7 @@ function Estoque() {
   let [Section, setSection] = useState([])
 
   useEffect(() => { //Executar apenas uma vez sem precisar de uma requisição manual
-    fetch('http://localhost:5000/itens') //requisição GET para adicionar todos os itens já cadastrado no documento
+    fetch('https://server-stock-j6wli97bb-ismaelmartins5254.vercel.app/itens') //requisição GET para adicionar todos os itens já cadastrado no documento
       .then(res => res.json())
       .then(data => {
         setItem(data)
@@ -26,7 +26,7 @@ function Estoque() {
     e.preventDefault()
     let iten = e.target
     let parent = iten.closest('section')
-    let res = await fetch(`http://localhost:5000/itens/${parent.id}`) // selecionando o card clicado ao BD
+    let res = await fetch(`https://server-stock-j6wli97bb-ismaelmartins5254.vercel.app/itens/${parent.id}`) // selecionando o card clicado ao BD
     let data = await res.json()
     setSection(data)
     setEditItem(true)//mostrar a página de edição

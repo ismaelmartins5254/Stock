@@ -7,7 +7,7 @@ function Types({ onchange }) {
   let [select, setSelect] = useState([])
 
   useEffect(() => {
-    fetch(' http://localhost:5000/types') //requisição aos tipos que serão adicionados (por enquanto ta adicionado fixo)
+    fetch(' https://server-stock-j6wli97bb-ismaelmartins5254.vercel.app/types') //requisição aos tipos que serão adicionados (por enquanto ta adicionado fixo)
       .then((res) => res.json())
       .then((data) => {
         setSelect(data)

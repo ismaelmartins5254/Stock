@@ -19,7 +19,7 @@ function AddSetor() {
   let [Text, setText] = useState('')
 
   useEffect(() => { //pegando todos os itens já adicionados no "BD" useEffect para executar uma vez
-    fetch('http://localhost:5000/types')
+    fetch('https://server-stock-j6wli97bb-ismaelmartins5254.vercel.app/types')
       .then((res) => res.json())
       .then((data) => {
         setItensSaves(data)
@@ -29,7 +29,7 @@ function AddSetor() {
 
   const Adsetor = async (e) => { //sistema de adicionar item no "BD" com async function
     e.preventDefault()
-    let res = await fetch('http://localhost:5000/types', {
+    let res = await fetch('https://server-stock-j6wli97bb-ismaelmartins5254.vercel.app/types', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

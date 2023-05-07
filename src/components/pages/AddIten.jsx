@@ -22,7 +22,7 @@ function AddIten() {
 
   async function AddIten() {
 
-    let link = 'http://localhost:5000/itens' // link do BD
+    let link = 'https://server-stock-j6wli97bb-ismaelmartins5254.vercel.app/itens' // link do BD
 
     if (name == 0 || description == 0 || value == 0 || quant == 0 || select == 0) { //verificação se todos os states foram alterados
       setMessage(true)

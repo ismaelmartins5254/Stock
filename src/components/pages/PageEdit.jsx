@@ -15,7 +15,7 @@ function PageEdit({ namep, descriptionp, quantp, typep, valuep, id }) {
 
   async function EditIten(e) {
     e.preventDefault()
-    let res = await fetch(`http://localhost:5000/itens/${id}`, { //reqisição para atualização dos itens no BD
+    let res = await fetch(`https://server-stock-j6wli97bb-ismaelmartins5254.vercel.app/itens/${id}`, { //reqisição para atualização dos itens no BD
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
