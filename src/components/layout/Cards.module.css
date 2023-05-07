@@ -15,9 +15,7 @@
     flex-direction: column;
     border-radius: 5px;
     margin: 0 .5em;
-    overflow: hidden;
 }
-
 
 .btns {
     display: flex;
@@ -42,4 +40,10 @@
     display: flex;
     width: 4em;
     margin: 0 1em;
+}
+
+.edition{
+    background-color: #fff;
+    color: #000;
+    border: none;
 }

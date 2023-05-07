@@ -1,27 +1,21 @@
 {
-  "itens": [
-    {
-      "name": "teste",
-      "description": "teste",
-      "value": "2",
-      "type": "sabão",
-      "quant": "2",
-      "valueT": "4",
-      "id": 1
-    }
-  ],
+  "itens": [],
   "types": [
+    {
+      "id": 1,
+      "name": "Alimentos não perecíveis"
+    },
+    {
+      "id": 6,
+      "name": "Bebidas"
+    },
     {
       "name": "sabão",
       "id": 8
     },
     {
-      "name": "pereciveis",
+      "name": "",
       "id": 9
-    },
-    {
-      "name": "tese",
-      "id": 10
     }
   ]
 }
