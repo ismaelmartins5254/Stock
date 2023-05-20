@@ -26,7 +26,7 @@ function Cards({ name, description, value, valueT, type, quant, ButtonEditIten, 
       setMessageText('O Item será excluído em instantes')
       setTimeout(() => {
         setMessage(false)
-        document.location.reload()
+        window.location.reload()
       }, 2000)
 
     } catch (error) {
