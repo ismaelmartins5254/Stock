@@ -15,7 +15,7 @@ function Cards({ name, description, value, valueT, type, quant, ButtonEditIten, 
     e.preventDefault()
     let iten = e.target //seleciona o item que Efetuou o evento DOM
     let parent = iten.closest('section') //procura o 'pai' na arvore do codigo
-    let res = await fetch(`http://localhost:5000/${location}/${parent.id}`, {
+    let res = await fetch(`https://server-stock-j6wli97bb-ismaelmartins5254.vercel.app/${location}/${parent.id}`, {
       method: 'DELETE'
     })
     let data = res.json()
