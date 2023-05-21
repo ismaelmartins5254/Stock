@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 
 import NavBar from "./components/layout/NavBar"
 import Estoque from "./components/pages/Estoque"
@@ -15,23 +15,17 @@ function App() {
     <>
       <Router>
         <NavBar Title='Stock' />
-        <Switch>
-          <Route exact path='/'>
-            <Home />
-          </Route>
-          <Route path='/Estoque'>
-            <Estoque />
-          </Route>
-          <Route path='/AddIten'>
-            <AddIten />
-          </Route>
-          <Route path='/PageEdit'>
-            <PageEdit />
-          </Route>
-          <Route path='/AddSetor'>
-            <AddSetor />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+
+          <Route path='/Estoque' element={<Estoque />} />
+
+          <Route path='/AddIten' element={<AddIten />} />
+
+          <Route path='/PageEdit' element={<PageEdit />} />
+
+          <Route path='/AddSetor' element={<AddSetor />} />
+        </Routes>
       </Router>
     </>
   )
