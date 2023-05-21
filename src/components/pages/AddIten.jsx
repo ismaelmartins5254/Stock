@@ -57,7 +57,7 @@ function AddIten() {
       setText('O Item será adicionado em instantes')
       setTimeout(() => {
         setMessage(false)
-        location.reload()
+        window.location.href('https://ismaelmartins5254.github.io/Stock/')
       }, 2000)
     } catch (error) {
       console.log(error)
