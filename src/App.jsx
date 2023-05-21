@@ -12,22 +12,22 @@ function App() {
 
 
   return (
-    <>
-      <Router basename="/Stock">
-        <NavBar Title='Stock' />
-        <Routes>
-          <Route exact path='/' element={<Home />} />
 
-          <Route path='/Estoque' element={<Estoque />} />
+    <Router basename="/Stock">
+      <NavBar Title='Stock' />
+      <Routes>
+        <Route exact path='/' element={<Home />} />
 
-          <Route path='/AddIten' element={<AddIten />} />
+        <Route path='/Estoque' element={<Estoque />} />
 
-          <Route path='/PageEdit' element={<PageEdit />} />
+        <Route path='/AddIten' element={<AddIten />} />
 
-          <Route path='/AddSetor' element={<AddSetor />} />
-        </Routes>
-      </Router>
-    </>
+        <Route path='/PageEdit' element={<PageEdit />} />
+
+        <Route path='/AddSetor' element={<AddSetor />} />
+      </Routes>
+    </Router>
+
   )
 }
 
