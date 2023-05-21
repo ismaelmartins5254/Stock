@@ -40,7 +40,7 @@ function AddSetor() {
     })
 
     try {
-      
+
       //tratamento do sucesso ao adicionar o item
       setMessage(true)
       setType('success')
@@ -50,8 +50,8 @@ function AddSetor() {
         setMessage(false)
         window.location.assign('https://ismaelmartins5254.github.io/Stock/')
       }, 1000)
-    } 
-    
+    }
+
     catch (error) { //tratamento de erro ao adicionar o item
       console.log(error)
       setMessage(true)
