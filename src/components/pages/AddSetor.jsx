@@ -48,7 +48,7 @@ function AddSetor() {
       
       setTimeout(() => {
         setMessage(false)
-        location.reload()
+        window.location.assign('https://ismaelmartins5254.github.io/Stock/')
       }, 1000)
     } 
     

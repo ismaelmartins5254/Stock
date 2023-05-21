@@ -30,7 +30,7 @@ function PageEdit({ namep, descriptionp, quantp, typep, valuep, id }) {
         "id": `${id}`
       })
     })
-    location.reload() // volta a página Estoque com os itens já editados
+    window.location.assign('https://ismaelmartins5254.github.io/Stock/') // volta a página Estoque com os itens já editados
   }
 
   return (

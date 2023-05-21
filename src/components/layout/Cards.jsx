@@ -26,7 +26,7 @@ function Cards({ name, description, value, valueT, type, quant, ButtonEditIten, 
       setMessageText('O Item será excluído em instantes')
       setTimeout(() => {
         setMessage(false)
-        window.location.host('https://ismaelmartins5254.github.io/Stock/')
+        window.location.assign('https://ismaelmartins5254.github.io/Stock/')
       }, 2000)
 
     } catch (error) {
