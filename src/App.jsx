@@ -25,6 +25,7 @@ function App() {
         <Route path='/PageEdit' element={<PageEdit />} />
 
         <Route path='/AddSetor' element={<AddSetor />} />
+        <Route  />
       </Routes>
     </Router>
 
