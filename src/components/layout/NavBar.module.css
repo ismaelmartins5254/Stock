@@ -78,13 +78,13 @@ a {
         
     }
 
-    .links li {
+    .links li {  
         background-color: #797979;
         cursor: pointer;
-        width: 5em;
-        margin-left: -3em;
         border-radius: 0px;
-        
+        font-size: 14px;
+        margin: 0.1em;
+        width: 5em;
     }
 
     #menu{
