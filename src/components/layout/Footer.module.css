@@ -1,0 +1,19 @@
+.container{
+    width: 100%;
+    min-height: 6em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #5f5f5f;
+    color: #d6d6d6;
+    flex-direction: column;
+}
+
+.redesSociais{
+    margin-top: .5em;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    display: flex;
+}
