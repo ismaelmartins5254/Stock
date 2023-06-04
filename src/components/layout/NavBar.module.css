@@ -1,5 +1,5 @@
 .container {
-    background-color: #868686;
+    background-color: #528399;
     margin: auto;
     height: 10em;
     color: #eeeeee;
@@ -44,7 +44,7 @@ a {
 }
 
 .links li:hover {
-    background-color: #999999;
+    background-color: #9cb6b9;
     cursor: pointer;
 }
 
@@ -79,7 +79,7 @@ a {
     }
 
     .links li {  
-        background-color: #797979;
+        background-color: #006494;
         cursor: pointer;
         border-radius: 0px;
         font-size: 14px;

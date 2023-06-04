@@ -15,12 +15,11 @@
 .NameBus{
     font-size: 1.5em;
     font-family: 'Cinzel', serif;
-    color: #979797;
-    background-color: #525252;
+    color: #e8f1f2;
+    background-color: #345768;
 }
 
 .minText{
-    
     color: #2a2a2a;
     margin-bottom: 1em;
 }
