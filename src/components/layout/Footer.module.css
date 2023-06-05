@@ -1,7 +1,9 @@
 .container{
+    bottom: 0;
+    left: 0;
     width: 100%;
     margin-top: 1em;
-    min-height: 40%;
+    min-height: 10%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,12 +12,4 @@
     color: #d6d6d6;
     flex-direction: column;
     position: absolute;
-}
-
-.redesSociais{
-    margin-top: .5em;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    display: flex;
 }

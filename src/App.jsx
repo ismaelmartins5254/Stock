@@ -6,7 +6,7 @@ import AddIten from "./components/pages/AddIten"
 import Home from "./components/layout/Home"
 import PageEdit from "./components/pages/PageEdit"
 import AddSetor from "./components/pages/AddSetor.jsx"
-import Footer from "./components/layout/Footer"
+
 
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
         <Route path='/AddSetor' element={<AddSetor />} />
         <Route  />
       </Routes>
-      <Footer/>
+      
     </Router>
 
   )

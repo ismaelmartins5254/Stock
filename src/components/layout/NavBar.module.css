@@ -70,6 +70,16 @@ a {
     flex-wrap: wrap;
 }
 
+
+.redesSociais{
+    margin-top: .5em;
+    justify-content: end;
+    align-items: center;
+    width: 90%;
+    display: flex;  
+}
+
+
 @media only screen and (max-width: 430px) {
     .links {
         width: 10em;
