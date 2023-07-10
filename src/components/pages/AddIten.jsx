@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Axios from 'axios'
 
 import Style from './AddIten.module.css'
 
@@ -36,33 +37,28 @@ function AddIten() {
 
 
 
-    var res = await fetch(link,{ // adicionando os itens no BD
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          "name": `${name}`,
-          "description": `${description}`,
-          "value": `${value}`,
-          "type": `${select}`,
-          "quant": `${quant}`,
-          "valueT": `${value * quant}`
-        }),
-
+    Axios.post('http://localhost:5000/addIten', {
+      name: `${name}`,
+      description: `${description}`,
+      value: `${value}`,
+      type: `${select}`,
+      quant: `${quant}`,
+      valueT: `${value * quant}`
+    }).then((res) => {
+      console.log(res)
+      if (res === null) {
+        setMessage(true)
+        setType('success')
+        setText('O Item será adicionado em instantes')
+        setTimeout(() => {
+          setMessage(false)
+          window.location.assign('http://localhost:5173/Stock/Estoque')
+        }, 2000)
+      }
+    })
+      .catch((error) => {
+        console.log(error)
       })
-    try {
-      setMessage(true)
-      setType('success')
-      setText('O Item será adicionado em instantes')
-      setTimeout(() => {
-        setMessage(false)
-        window.location.assign('https://ismaelmartins5254.github.io/Stock/')
-      }, 2000)
-    } catch (error) {
-      console.log(error)
-    }
-
   }
 
 
