@@ -21,9 +21,7 @@ function AddIten() {
   let [Text, setText] = useState('')
 
 
-  async function AddIten() {
-
-    let link = 'https://server-stock-j6wli97bb-ismaelmartins5254.vercel.app/itens' // link do BD
+  function AddIten() {
 
     if (name == 0 || description == 0 || value == 0 || quant == 0 || select == 0) { //verificação se todos os states foram alterados
       setMessage(true)
@@ -36,7 +34,7 @@ function AddIten() {
     }
 
 
-
+    console.log('axios')
     Axios.post('http://localhost:5000/addIten', {
       name: `${name}`,
       description: `${description}`,
@@ -44,21 +42,24 @@ function AddIten() {
       type: `${select}`,
       quant: `${quant}`,
       valueT: `${value * quant}`
-    }).then((res) => {
-      console.log(res)
-      if (res === null) {
-        setMessage(true)
-        setType('success')
-        setText('O Item será adicionado em instantes')
-        setTimeout(() => {
-          setMessage(false)
-          window.location.assign('http://localhost:5173/Stock/Estoque')
-        }, 2000)
-      }
     })
-      .catch((error) => {
+
+
+    try {
+      console.log('axios')
+      setMessage(true)
+      setType('success')
+      setText('O Item será adicionado em instantes')
+      setTimeout(() => {
+        setMessage(false)
+        // window.location.assign('http://localhost:5173/Stock/Estoque')
+      }, 2000)
+    }
+    catch {
+      (error) => {
         console.log(error)
-      })
+      }
+    }
   }
 
 

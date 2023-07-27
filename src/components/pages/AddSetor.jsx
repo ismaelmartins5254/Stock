@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import Axios from "axios"
 
 import Style from './AddSetor.module.css'
 
@@ -6,6 +7,7 @@ import Inputs from "../form/Inputs"
 import Button from "../form/Button"
 import Cards from "../layout/Cards"
 import Message from '../layout/Message'
+
 
 
 function AddSetor() {
@@ -19,7 +21,7 @@ function AddSetor() {
   let [Text, setText] = useState('')
 
   useEffect(() => { //pegando todos os itens já adicionados no "BD" useEffect para executar uma vez
-    fetch('https://server-stock-j6wli97bb-ismaelmartins5254.vercel.app/types')
+    Axios.get('http://localhost:5000/GetSetor')
       .then((res) => res.json())
       .then((data) => {
         setItensSaves(data)
@@ -27,28 +29,22 @@ function AddSetor() {
       .catch((err) => console.log(err))
   }, [])
 
-  const Adsetor = async (e) => { //sistema de adicionar item no "BD" com async function
+  const Adsetor = (e) => { //sistema de adicionar item no "BD" com async function
     e.preventDefault()
-    let res = await fetch('https://server-stock-j6wli97bb-ismaelmartins5254.vercel.app/types', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "name": `${setor}`
-      })
+
+    Axios.post('http://localhost:5000/addSetor', {
+      setor: `${setor}`
     })
 
     try {
-
       //tratamento do sucesso ao adicionar o item
       setMessage(true)
       setType('success')
       setText('O Item será adicionado em instantes')
-      
+
       setTimeout(() => {
         setMessage(false)
-        window.location.assign('https://ismaelmartins5254.github.io/Stock/')
+        //window.location.assign('https://ismaelmartins5254.github.io/Stock/')
       }, 1000)
     }
 
@@ -62,7 +58,6 @@ function AddSetor() {
       }, 1000)
       return
     }
-
 
   }
 

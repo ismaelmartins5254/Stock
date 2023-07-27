@@ -5,6 +5,7 @@ import PageEdit from '../pages/PageEdit'
 import ButtonLink from '../layout/ButtonLink'
 
 import Style from './Estoque.module.css'
+import Axios from 'axios'
 
 
 function Estoque() {
@@ -14,7 +15,7 @@ function Estoque() {
   let [Section, setSection] = useState([])
 
   useEffect(() => { //Executar apenas uma vez sem precisar de uma requisição manual
-    fetch('https://server-stock-j6wli97bb-ismaelmartins5254.vercel.app/itens') //requisição GET para adicionar todos os itens já cadastrado no documento
+    Axios('/getaddIten') //requisição GET para adicionar todos os itens já cadastrado no documento
       .then(res => res.json())
       .then(data => {
         setItem(data)
