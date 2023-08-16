@@ -1,0 +1,47 @@
+.container {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cards {
+    width: 15em;
+    background-color: #6aaabe;
+    border: 1px solid #838383;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    margin: 0 .5em;
+}
+
+.btns {
+    display: flex;
+    margin-top: 1em;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 2em;
+}
+
+.edit {
+    font-size: 1em;
+    display: flex;
+    width: 4em;
+    margin: 0 1em;
+}
+
+.exl {
+    font-size: 1em;
+    display: flex;
+    width: 4em;
+    margin: 0 1em;
+}
+
+.edition {
+    background-color: #fff;
+    color: #000;
+    border: none;
+}
