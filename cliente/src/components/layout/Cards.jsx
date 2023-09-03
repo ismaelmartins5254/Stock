@@ -16,11 +16,12 @@ function Cards({ name, description, value, valueT, type, quant, ButtonEditIten, 
     e.preventDefault()
     let iten = e.target //seleciona o item que Efetuou o evento DOM
     let parent = iten.closest('section') //procura o 'pai' na arvore do codigo
-    let res = await fetch(`https://server-stock-j6wli97bb-ismaelmartins5254.vercel.app/${location}/${parent.id}`, {
-      method: 'DELETE'
+    let res = await Axios.delete(`http://localhost:5000/deletItens`, {
+      data: {
+        id: parent.id
+      }
     })
-    Axios.delete
-    let data = res.json()
+    let data = await res
     console.log(data)
     try {
       setMessage(true)
@@ -28,7 +29,6 @@ function Cards({ name, description, value, valueT, type, quant, ButtonEditIten, 
       setMessageText('O Item será excluído em instantes')
       setTimeout(() => {
         setMessage(false)
-        window.location.assign('https://ismaelmartins5254.github.io/Stock/')
       }, 2000)
 
     } catch (error) {

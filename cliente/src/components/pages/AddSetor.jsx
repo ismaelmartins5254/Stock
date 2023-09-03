@@ -34,6 +34,18 @@ function AddSetor() {
   }, [])
 
   const Adsetor = async (e) => { //sistema de adicionar item no "BD" com async function
+
+    if (setor == 0) {
+      setMessage(true)
+      setType('error')
+      setText('Por favor digite algo antes de adicionar!')
+
+      setTimeout(() => {
+        setMessage(false)
+      }, 2000)
+      return
+    }
+
     e.preventDefault()
 
     Axios.post('http://localhost:5000/AddSetor', {
@@ -41,7 +53,6 @@ function AddSetor() {
     })
 
     try {
-
       //tratamento do sucesso ao adicionar o item
       setMessage(true)
       setType('success')

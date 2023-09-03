@@ -86,9 +86,9 @@ app.get("/getsetor", (req, res) => {
 
 app.put("/editSetor", (req, res) => {
   let SQL = "UPDATE setor SET setor = ? WHERE id = ?"
-  let {iten, id} = req.body
-  
-  db.query(SQL, [iten,id], (err, result)=>{
+  let { iten, id } = req.body
+
+  db.query(SQL, [iten, id], (err, result) => {
     if (err) {
       console.log(err);
       res.status(500).send("Erro ao atualizar os itens.");
@@ -98,6 +98,21 @@ app.put("/editSetor", (req, res) => {
     }
   })
 
+})
+
+app.delete("/deletItens", (req, res) => {
+  let SQL = "DELETE from itensadd WHERE id = ?"
+  let { id } = req.body
+
+  db.query(SQL, [id], (err, result) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send("Erro ao deletar o item.");
+    } else {
+      console.log(result);
+      res.send("Item deletado com sucesso.");
+    }
+  })
 })
 
 app.listen(5000, () => {
