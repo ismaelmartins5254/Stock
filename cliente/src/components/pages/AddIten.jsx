@@ -23,7 +23,6 @@ function AddIten() {
 
   async function AddIten() {
 
-    let link = 'https://server-stock-j6wli97bb-ismaelmartins5254.vercel.app/itens' // link do BD
 
     if (name == 0 || description == 0 || value == 0 || quant == 0 || select == 0) { //verificação se todos os states foram alterados
       setMessage(true)
@@ -35,35 +34,6 @@ function AddIten() {
       return
     }
 
-
-
-    var res = await fetch(link, { // adicionando os itens no BD
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "name": `${name}`,
-        "description": `${description}`,
-        "value": `${value}`,
-        "type": `${select}`,
-        "quant": `${quant}`,
-        "valueT": `${value * quant}`
-      }),
-
-    })
-    try {
-      setMessage(true)
-      setType('success')
-      setText('O Item será adicionado em instantes')
-      setTimeout(() => {
-        setMessage(false)
-        
-      }, 2000)
-    } catch (error) {
-      console.log(error)
-    }
-
     //banco de dados back end 
     Axios.post('http://localhost:5000/addIten', {
       name: `${name}`,
@@ -72,9 +42,18 @@ function AddIten() {
       type: `${select}`,
       quant: `${quant}`,
       valueT: `${value * quant}`
-    }).then((res)=>{
-      console.log(res)
     })
+    try {
+      setMessage(true)
+      setType('success')
+      setText('O Item será adicionado em instantes')
+      setTimeout(() => {
+        setMessage(false)
+
+      }, 2000)
+    } catch (error) {
+      console.log(error)
+    }
 
   }
 

@@ -1,3 +1,16 @@
+.container{
+    align-items: center;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+
+.Addnew{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+}
+
 .cards{
     width: 100%;
     display: flex;
@@ -17,9 +30,16 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 2em;
-    border: 2px solid #9cb6b9;
 }
 
 .AddSetor > input{
     width: 15em;
+}
+
+.edit{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20em;
 }

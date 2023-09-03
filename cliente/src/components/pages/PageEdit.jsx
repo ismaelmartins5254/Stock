@@ -13,10 +13,9 @@ function PageEdit({ namep, descriptionp, quantp, typep, valuep, id }) {
   let [description, setDescription] = useState(`${descriptionp}`)
   let [value, setValue] = useState(`${valuep}`)
   let [quant, setQuant] = useState(`${quantp}`)
-
   async function EditIten(e) {
     e.preventDefault()
-    Axios.put(`http://localhost:5000/addIten/`, {
+    Axios.put(`http://localhost:5000/editItens/`, {
       "name": `${name}`,
       "description": `${description}`,
       "value": `${value}`,
@@ -26,6 +25,8 @@ function PageEdit({ namep, descriptionp, quantp, typep, valuep, id }) {
       "id": `${id}`
     }).then((res) => {
       console.log(res)
+    }).catch((err)=>{
+      console.log(err)
     })
 
   }

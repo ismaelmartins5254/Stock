@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Style from './Cards.module.css'
 import Button from '../form/Button'
 import Message from './Message'
+import Axios from 'axios'
 
 
 function Cards({ name, description, value, valueT, type, quant, ButtonEditIten, id, location }) {
@@ -18,6 +19,7 @@ function Cards({ name, description, value, valueT, type, quant, ButtonEditIten, 
     let res = await fetch(`https://server-stock-j6wli97bb-ismaelmartins5254.vercel.app/${location}/${parent.id}`, {
       method: 'DELETE'
     })
+    Axios.delete
     let data = res.json()
     console.log(data)
     try {

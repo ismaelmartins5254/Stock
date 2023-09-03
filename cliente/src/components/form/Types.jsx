@@ -1,3 +1,4 @@
+import  Axios  from "axios"
 import { useEffect, useState } from "react"
 
 import Style from './Types.module.css'
@@ -6,14 +7,11 @@ function Types({ onchange }) {
 
   let [select, setSelect] = useState([])
 
-  useEffect(() => {
-    fetch(' https://server-stock-j6wli97bb-ismaelmartins5254.vercel.app/types') //requisição aos tipos que serão adicionados (por enquanto ta adicionado fixo)
-      .then((res) => res.json())
-      .then((data) => {
-        setSelect(data)
-      }).catch((err) => {
-        console.log(err)
-      })
+  useEffect( () => {
+      Axios.get("http://localhost:5000/getsetor/")  //requisição aos tipos que serão adicionados (por enquanto ta adicionado fixo)
+     .then((res)=>{
+      setSelect(res.data)
+     })
   }, [])
 
 
@@ -22,7 +20,7 @@ function Types({ onchange }) {
       <select onChange={onchange} className={Style.sele}>
         <option value='Selecione uma opção'>Selecione uma opção</option>
         {select.map(options => (
-          <option value={options.name} key={options.id}>{options.name}</option>
+          <option value={options.setor} key={options.id}>{options.setor}</option>
         ))}
       </select>
     </>
