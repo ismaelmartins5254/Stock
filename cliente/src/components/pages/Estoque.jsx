@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import Axios from 'axios'
+//importação da function derequisição ao banco de dados AWS
+import fetchData from "../../../../banco-de-dados/Requires.jsx"
 
 import Cards from '../layout/Cards'
 import PageEdit from '../pages/PageEdit'
@@ -9,16 +11,16 @@ import Style from './Estoque.module.css'
 
 
 
-function Estoque() {
+function Estoque(AWSDB) {
 
   let [item, setItem] = useState()
   let [EditItem, setEditItem] = useState(false)
   let [Section, setSection] = useState([])
 
   useEffect(() => { //Executar apenas uma vez sem precisar de uma requisição manual
-    Axios.get('http://localhost:5000/getaddIten').then((res) => {
-      setItem(res.data)
-    })
+
+    fetchData("Id")
+    console.log(AWSDB)
   }, [])
 
   const EditIten = async (e) => { //sistema de edição dos itens
@@ -46,7 +48,7 @@ function Estoque() {
             quantp={e.quant}
             id={e.id}
           />
-        )): (
+        )) : (
           item && item.map((iten) => (
             //O sistema de deletar os itens está na página cards
             <Cards
