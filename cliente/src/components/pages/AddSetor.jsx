@@ -1,5 +1,3 @@
-
-
 //o sistema de exclusão dos itens está na página Cards
 import { useState, useEffect } from "react"
 
@@ -12,6 +10,7 @@ import Message from '../layout/Message'
 import Axios from "axios"
 
 
+
 function AddSetor() {
 
   let [setor, setSetor] = useState('')
@@ -19,19 +18,17 @@ function AddSetor() {
   let [ItenEdit, setItenEdit] = useState('')
   let [ItenEditing, setItenEditing] = useState('')
   let [Id, setId] = useState('')
+  let [data, setData] = useState('')
   let [TextAdd, setTextAdd] = useState(false)
   let [message, setMessage] = useState(false)
   let [Type, setType] = useState('')
   let [Text, setText] = useState('')
 
-  useEffect(() => { //pegando todos os itens já adicionados no "BD" useEffect para executar uma vez
-
-    Axios.get('http://localhost:5000/getsetor')
-      .then((res) => {
-        setItensSaves(res.data)
-      })
-      .catch((err) => console.log(err))
-  }, [])
+  useEffect(() => {
+    Axios.get("http://localhost:5000/getsetor")
+      .then(response => setData(response.data))
+      .catch(error => console.error('Erro ao buscar dados:', error));
+  }, []);
 
   const Adsetor = async (e) => { //sistema de adicionar item no "BD" com async function
 

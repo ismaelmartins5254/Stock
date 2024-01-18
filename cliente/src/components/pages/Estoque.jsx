@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Axios from 'axios'
 //importação da function derequisição ao banco de dados AWS
-import fetchData from "../../../../banco-de-dados/Requires.jsx"
+
 
 import Cards from '../layout/Cards'
 import PageEdit from '../pages/PageEdit'
@@ -19,7 +19,7 @@ function Estoque(AWSDB) {
 
   useEffect(() => { //Executar apenas uma vez sem precisar de uma requisição manual
 
-    fetchData("Id")
+    Axios.get('/getaddIten')
     console.log(AWSDB)
   }, [])
 

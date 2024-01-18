@@ -1,22 +1,37 @@
-
+const pg = require('pg')
 const express = require("express")
 const app = express()
-const mysql = require("mysql2")
 const cors = require("cors")
-
-
-
-const db = mysql.createPool({
-  host: 'localhost',
-  password: '',
-  user: 'root',
-  database: 'stock'
-})
 
 app.use(cors())
 app.use(express.json())
 
-app.post("/addIten", (req, res) => {
+
+var conString = "postgres://kvpnrupp:ehl03OAkYkHFWjiLcUuXro_zR_4mg60S@heffalump.db.elephantsql.com/kvpnrupp" //conexão com o bd
+const client = new pg.Client(conString)
+
+
+app.get("/getsetor", ((err, res) => {
+  client.connect((err) => {
+    if (err) return console.error(err, 'erro no backend')
+    let SQL = "SELECT * FROM setor"
+
+    client.query(SQL, (err, result) => {
+      if (err) console.error(err)
+      else {
+        console.log('deu certo no back')
+        res.send(result.rows)
+        console.log(result.rows)
+      }
+      client.end()
+    })
+  })
+}))
+
+
+
+/*
+app.post(`/addIten`, (req, res) => {
   const { name } = req.body
   const { description } = req.body
   const { value } = req.body
@@ -25,18 +40,22 @@ app.post("/addIten", (req, res) => {
   const { valueT } = req.body
   let SQL = 'INSERT INTO itensadd (name,description,value,type,quant,valueT) VALUE (?,?,?,?,?,?)'
 
-  db.query(SQL, [name, description, value, type, quant, valueT], (err) => {
-    console.log(err)
-  })
+  pool.query(SQL, [name, description, value, type, quant, valueT], (err, res) => {
 
+    if (err) console.log(err)
+    else console.log('deu certo', res)
+  })
 })
 
 app.get("/getaddIten", (req, res) => {
   let SQL = "SELECT * from itensadd"
 
-  db.query(SQL, (err, result) => {
-    if (err) console.log(err)
-    else res.send(result)
+  pool.query(SQL, (err, result) => {
+    if (err) console.log(err, 'deu errado')
+    else {
+      res.send(result)
+      console.log('deu certo')
+    }
   })
 })
 
@@ -76,15 +95,10 @@ app.post("/AddSetor", (req, res) => {
     }
   })
 })
+*/
 
-app.get("/getsetor", (req, res) => {
-  let SQL = "SELECT * FROM `setor`"
-  db.query(SQL, (err, result) => {
-    if (err) console.log(err)
-    else res.send(result)
-  })
-})
 
+/*
 app.put("/editSetor", (req, res) => {
   let SQL = "UPDATE setor SET setor = ? WHERE id = ?"
   let { iten, id } = req.body
@@ -115,6 +129,7 @@ app.delete("/deletItens", (req, res) => {
     }
   })
 })
+*/
 
 app.listen(5000, () => {
   console.log('servidor rodando')
