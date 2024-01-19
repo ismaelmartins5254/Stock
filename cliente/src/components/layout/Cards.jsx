@@ -16,9 +16,9 @@ function Cards({ name, description, value, valueT, type, quant, ButtonEditIten, 
     e.preventDefault()
     let iten = e.target //seleciona o item que Efetuou o evento DOM
     let parent = iten.closest('section') //procura o 'pai' na arvore do codigo
-    let res = await Axios.delete(`http://localhost:5000/deletItens`, {
+    let res = await Axios.delete(`http://localhost:5000/delet${location}`, {
       data: {
-        id: parent.id
+        "id": parent.id,
       }
     })
     let data = await res

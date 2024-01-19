@@ -11,16 +11,18 @@ import Style from './Estoque.module.css'
 
 
 
-function Estoque(AWSDB) {
+function Estoque() {
 
   let [item, setItem] = useState()
   let [EditItem, setEditItem] = useState(false)
   let [Section, setSection] = useState([])
 
-  useEffect(() => { //Executar apenas uma vez sem precisar de uma requisição manual
+  useEffect( () => { //Executar apenas uma vez sem precisar de uma requisição manual
 
-    Axios.get('/getaddIten')
-    console.log(AWSDB)
+    Axios.get('http://localhost:5000/getaddIten')
+    .then(res =>{
+      setItem(res.data)
+    }).catch(err => console.log(err))
   }, [])
 
   const EditIten = async (e) => { //sistema de edição dos itens
@@ -62,7 +64,7 @@ function Estoque(AWSDB) {
               id={iten.id}
               ButtonEditIten={EditIten}
               editP={EditItem}
-              location='itens'
+              location='Itens'
             />
           ))
         )

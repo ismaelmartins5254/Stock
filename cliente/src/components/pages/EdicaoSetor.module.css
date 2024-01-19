@@ -1,12 +1,7 @@
-.AddSetor{
-        
+.edit{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 2em;
-}
-
-.AddSetor > input{
-    width: 15em;
+    width: 20em;
 }

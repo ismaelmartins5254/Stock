@@ -5,7 +5,7 @@ import Estoque from "./components/pages/Estoque"
 import AddIten from "./components/pages/AddIten"
 import Home from "./components/layout/Home"
 import PageEdit from "./components/pages/PageEdit"
-import AddSetor from "./components/pages/AddSetor.jsx"
+import AddSetor from "./components/pages/PageSetor.jsx"
 
 
 

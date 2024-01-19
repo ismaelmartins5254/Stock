@@ -1,3 +1,5 @@
+//Arquivo de edição dos itens adicionados
+
 import { useState } from 'react'
 
 import Inputs from '../form/Inputs'
@@ -15,7 +17,7 @@ function PageEdit({ namep, descriptionp, quantp, typep, valuep, id }) {
   let [quant, setQuant] = useState(`${quantp}`)
   async function EditIten(e) {
     e.preventDefault()
-    Axios.put(`http://localhost:5000/editItens/`, {
+    Axios.put(`http://localhost:5000/editItens`, {
       "name": `${name}`,
       "description": `${description}`,
       "value": `${value}`,

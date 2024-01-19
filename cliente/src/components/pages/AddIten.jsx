@@ -35,7 +35,7 @@ function AddIten() {
     }
 
     //banco de dados back end 
-    Axios.post('heffalump.db.elephantsql.com/addIten', {
+    Axios.post('http://localhost:5000/addIten', {
       name: `${name}`,
       description: `${description}`,
       value: `${value}`,
