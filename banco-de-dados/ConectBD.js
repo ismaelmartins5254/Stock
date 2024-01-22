@@ -1,6 +1,7 @@
 const pg = require('pg')
+require('dotenv').config()
 
-var conString = "postgres://kvpnrupp:ehl03OAkYkHFWjiLcUuXro_zR_4mg60S@heffalump.db.elephantsql.com/kvpnrupp" //conexão com o bd
+var conString = process.env.URL_DB //conexão com o bd
 const client = new pg.Client(conString)
 client.connect((err) => {
     if (err) return console.error(err, 'erro no backend')

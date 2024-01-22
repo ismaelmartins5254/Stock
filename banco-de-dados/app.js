@@ -7,7 +7,7 @@ app.use(cors())
 app.use(express.json())
 
 
-app.post(`/addIten`, (req, res) => {
+app.post(`/addIten`, (req, res) => { //requisição para postar os itens que fica no arquivo Additen.jsx
   const { name } = req.body
   const { description } = req.body
   const { value } = req.body
@@ -17,25 +17,22 @@ app.post(`/addIten`, (req, res) => {
   let SQL = 'INSERT INTO itensadd (name,description,value,type,quant,valueT) VALUES ($1,$2,$3,$4,$5,$6)'
 
   client.query(SQL, [name, description, value, type, quant, valueT], (err, res) => {
-
     if (err) console.log(err)
-    else console.log('deu certo', res)
   })
 })
 
-app.get("/getaddIten", (req, res) => {
+app.get("/getaddIten", (req, res) => { //requisição para pegar os itens adicionados
   let SQL = "SELECT * from itensadd"
 
-  client.query(SQL, (err, result) => {
+  client.query(SQL, (err, result) => { //inicio da requisição com o banco de dados
     if (err) console.log(err, 'deu errado')
     else {
-      res.send(result.rows)
-      console.log(result.rows)
+      res.send(result.rows) //enviar o resultado para o frontend
     }
   })
 })
 
-app.put("/editItens", (req, res) => {
+app.put("/editItens", (req, res) => { //editar os itens adicionados
   const { name, description, value, type, quant, valueT, id } = req.body;
   let SQL = "UPDATE itensadd SET name = ?, description = ?, value = ?, type = ?, quant = ?, valueT = ? WHERE id = ?";
 
@@ -75,7 +72,7 @@ app.delete("/deletItens", (req, res) => { // Toda a requisição front está no 
   })
 })
 
-app.get("/getsetor", ((err, res) => {
+app.get("/getsetor", ((err, res) => { //pegar os setores adicionados
 
   let SQL = "SELECT * FROM setor"
 
@@ -90,7 +87,7 @@ app.get("/getsetor", ((err, res) => {
 })
 )
 
-app.post("/AddSetor", (req, res) => {
+app.post("/AddSetor", (req, res) => { //adiocionar itens na pagina setor- arquivo AddSetor.jsx
   const { setor } = req.body
   const SQL = "INSERT INTO setor (setor) VALUES ($1)"
 
@@ -105,7 +102,7 @@ app.post("/AddSetor", (req, res) => {
   })
 })
 
-app.put("/editSetor", (req, res) => {
+app.put("/editSetor", (req, res) => { //editar setores adicionados
 
   let { iten, id } = req.body
   let SQL = "UPDATE setor SET setor = $1 WHERE id = $2"
