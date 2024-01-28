@@ -6,9 +6,10 @@ import Style from './Types.module.css'
 function Types({ onchange }) {
 
   let [select, setSelect] = useState([])
+  const linkBack = "https://stock-api-6p8t.onrender.com/"
 
   useEffect( () => {
-      Axios.get("http://localhost:5000/getsetor/")  //requisição aos tipos que serão adicionados (por enquanto ta adicionado fixo)
+      Axios.get(`${linkBack}getsetor`)  //requisição aos tipos que serão adicionados 
      .then((res)=>{
       setSelect(res.data)
      })
