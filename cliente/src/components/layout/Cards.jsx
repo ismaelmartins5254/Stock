@@ -12,11 +12,13 @@ function Cards({ name, description, value, valueT, type, quant, ButtonEditIten, 
   let [messageText, setMessageText] = useState('')
   let [typeM, setTypeM] = useState('')
 
+  const linkBack = "https://stock-api-6p8t.onrender.com/"
+
   const DelIten = async (e) => { //sistema para deletar o item desejado
     e.preventDefault()
     let iten = e.target //seleciona o item que Efetuou o evento DOM
     let parent = iten.closest('section') //procura o 'pai' na arvore do codigo
-    let res = await Axios.delete(`http://localhost:5000/delet${location}`, {
+    let res = await Axios.delete(`${linkBack}delet${location}`, {
       data: {
         "id": parent.id,
       }

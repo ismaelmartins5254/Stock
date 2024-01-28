@@ -15,9 +15,12 @@ function PageEdit({ namep, descriptionp, quantp, typep, valuep, id }) {
   let [description, setDescription] = useState(`${descriptionp}`)
   let [value, setValue] = useState(`${valuep}`)
   let [quant, setQuant] = useState(`${quantp}`)
+
+  const linkBack = "https://stock-api-6p8t.onrender.com/"
+  
   async function EditIten(e) {
     e.preventDefault()
-    Axios.put(`http://localhost:5000/editItens`, {
+    Axios.put(`${linkBack}editItens`, {
       "name": `${name}`,
       "description": `${description}`,
       "value": `${value}`,

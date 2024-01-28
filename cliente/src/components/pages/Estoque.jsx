@@ -13,13 +13,15 @@ import Style from './Estoque.module.css'
 
 function Estoque() {
 
-  let [item, setItem] = useState()
-  let [EditItem, setEditItem] = useState(false)
-  let [Section, setSection] = useState([])
+  let [item, setItem] = useState() //saçvar os itens da requisição GET no UseEffect apresentando na página
+  let [EditItem, setEditItem] = useState(false) //pagina especifica para edição
+  let [Editing, setEditing] = useState([]) //Salvar os itens para edição 
+
+  const linkBack = "https://stock-api-6p8t.onrender.com/"
 
   useEffect( () => { //Executar apenas uma vez sem precisar de uma requisição manual
 
-    Axios.get('http://localhost:5000/getaddIten')
+    Axios.get(`${linkBack}getaddIten`)
     .then(res =>{
       setItem(res.data)
     }).catch(err => console.log(err))
@@ -29,9 +31,9 @@ function Estoque() {
     e.preventDefault()
     let iten = e.target
     let parent = iten.closest('section')
-    let res = await Axios.get(`http://localhost:5000/getItensforEdit?id=${parent.id}`) // selecionando o card clicado ao BD
+    let res = await Axios.get(`${linkBack}getItensforEdit?id=${parent.id}`) // selecionando o card clicado ao BD
     let data = await res
-    setSection(data.data)
+    setEditing(data.data)
     setEditItem(true) //mostrar a página de edição
   }
 
@@ -39,7 +41,7 @@ function Estoque() {
     <div className={Style.container}>
 
       {EditItem ?
-        Section.map((e) => (
+        Editing.map((e) => (
           <PageEdit
             namep={e.name}
             descriptionp={e.description}
@@ -58,7 +60,7 @@ function Estoque() {
               name={iten.name}
               description={iten.description}
               value={iten.value}
-              valueT={iten.valueT}
+              valueT={iten.value*iten.quant}
               type={iten.type}
               quant={iten.quant}
               id={iten.id}

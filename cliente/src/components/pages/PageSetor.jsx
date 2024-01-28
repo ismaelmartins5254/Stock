@@ -8,7 +8,6 @@ import EdicaoSetor from "./EdicaoSetor"
 
 import Button from "../form/Button"
 import Cards from "../layout/Cards"
-import Message from '../layout/Message'
 import Axios from "axios"
 
 
@@ -19,15 +18,14 @@ function PageSetor() {
   let [ItenEdit, setItenEdit] = useState('')
   let [Id, setId] = useState('')
   let [TextAdd, setTextAdd] = useState(false)
-  let [message, setMessage] = useState(false)
-  let [Type, setType] = useState('')
-  let [Text, setText] = useState('')
+
+
+  const linkBack = "https://stock-api-6p8t.onrender.com/"
 
   useEffect(() => {
-    Axios.get("http://localhost:5000/getsetor")
+    Axios.get(`${linkBack}getsetor`)
       .then(response => {
         setItensSaves(response.data)
-
       })
       .catch(error => console.error('Erro ao buscar dados:', error));
   }, []);
@@ -43,12 +41,7 @@ function PageSetor() {
 
   return (
     <div className={Style.container}>
-      {message && ( // menssagem especificando se o item foi adicionado ou não
-        <Message
-          type={Type}
-          text={Text}
-        />
-      )}
+     
 
       {TextAdd ? ( // sistema para adicionar os itens
         <AddSetor />

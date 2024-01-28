@@ -11,6 +11,8 @@ import Message from '../layout/Message'
 
 function AddIten() {
 
+  const linkBack = "https://stock-api-6p8t.onrender.com/"
+
   let [name, setName] = useState('')
   let [description, setDescription] = useState('')
   let [value, setValue] = useState('')
@@ -24,7 +26,7 @@ function AddIten() {
   async function AddIten() {
 
 
-    if (name == 0 || description == 0 || value == 0 || quant == 0) { //verificação se todos os states foram alterados
+    if (name == 0 || description == 0 || value == 0 || quant == 0 || select == 0) { //verificação se todos os states foram alterados
       setMessage(true)
       setType('error')
       setText('Preencha todos os itens antes de continuar :)')
@@ -35,7 +37,7 @@ function AddIten() {
     }
 
     //banco de dados back end 
-    Axios.post('http://localhost:5000/addIten', {
+    Axios.post(`${linkBack}addIten`, {
       name: `${name}`,
       description: `${description}`,
       value: `${value}`,

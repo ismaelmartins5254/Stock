@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import Button from '../form/Button'
 import Inputs from '../form/Inputs'
+import Message from '../layout/Message'
 import Style from './AddSetor.module.css'
 import Axios from 'axios'
 
 function AddSetor() {
+
+  const linkBack = "https://stock-api-6p8t.onrender.com/"
 
 
   let [setor, setSetor] = useState('')
@@ -27,7 +30,7 @@ function AddSetor() {
       return
     }
 
-    Axios.post('http://localhost:5000/AddSetor', {
+    Axios.post(`${linkBack}AddSetor`, {
       "setor": `${setor}`
     })
 
@@ -59,18 +62,27 @@ function AddSetor() {
 
 
   return (
-    <div className={Style.AddSetor}>
-      <Inputs
-        type='text'
-        place='o nome do setor'
-        ValueLabel='Digite aqui o nome do setor: '
-        change={(e) => setSetor(e.target.value)}
-      />
-      <Button
-        text='Adicionar'
-        onclick={Adsetor}
-      />
-    </div>
+    <>
+      {message && (
+        <Message
+          text={Text}
+          type={Type}
+        />
+      )}
+      <div className={Style.AddSetor}>
+        <Inputs
+          type='text'
+          place='o nome do setor'
+          ValueLabel='Digite aqui o nome do setor: '
+          change={(e) => setSetor(e.target.value)}
+        />
+        <Button
+          text='Adicionar'
+          onclick={Adsetor}
+        />
+      </div>
+
+    </>
   )
 }
 
